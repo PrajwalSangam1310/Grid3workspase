@@ -1,0 +1,9 @@
+<launch>
+  <arg default="true" name="gui"/>
+  <arg default="$(find grid3)/launch/urdf.rviz" name="rvizconfig"/>
+  <param textfile="$(find grid3)/urdf/robot1.urdf" name="robot_description"/>
+  <param name="use_gui" value="$(arg gui)"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node args="-d $(arg rvizconfig)" name="rviz" pkg="rviz" required="true" type="rviz"/>
+</launch>
